@@ -1,0 +1,23 @@
+[package]
+name = "tree-sitter-abap-sqry"
+version = "4.10.13"
+edition = "2021"
+license = "MIT"
+# Patched for the IntentDiff wasm build:
+# - exposes tree-sitter-language 0.1 / tree-sitter 0.25 compatible bindings
+# - parser.c is pre-compiled to lib/libtree_sitter_abap.a for wasm32-wasip2
+build = "build.rs"
+links = "tree_sitter_abap"
+
+[lib]
+name = "tree_sitter_abap_sqry"
+path = "src/lib.rs"
+
+[dependencies]
+tree-sitter-language = "0.1"
+
+[build-dependencies]
+cc = "1"
+
+[dev-dependencies]
+tree-sitter = "0.25"
